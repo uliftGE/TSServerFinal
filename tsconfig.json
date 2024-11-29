@@ -1,0 +1,17 @@
+{
+  "extends": "@tsconfig/node20/tsconfig.json",
+  "include": ["src/**/*", "test/**/*"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "strictNullChecks": true,
+    "rootDir": ".",
+    "outDir": "dist"
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}
