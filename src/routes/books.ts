@@ -1,5 +1,3 @@
-// src/routes/books.js
-
 import express, { Request, Response } from 'express';
 import {
   Book,
@@ -17,7 +15,6 @@ import { books } from '../data';
 const router = express.Router();
 
 // GET /books - 모든 책 목록을 가져옵니다.
-// Response 제네릭을 사용하여 body의 타입을 지정할 수 있습니다.
 router.get('/', (req, res: Response<ApiResponse<GetBooksResponseBody>>) => {
   res.json({ time: new Date().toISOString(), error: null, data: books });
 });
@@ -26,9 +23,7 @@ router.get('/', (req, res: Response<ApiResponse<GetBooksResponseBody>>) => {
 router.get(
   '/:id',
   (
-    // Request의 제네릭을 사용하여 params의 타입을 지정할 수 있습니다.
     req: Request<{ id: string }>,
-    // Response 제네릭을 사용하여 body의 타입을 지정할 수 있습니다.
     res: Response<ApiResponse<GetBookResponseBody>>
   ) => {
     const bookId = parseInt(req.params.id, 10);
@@ -50,9 +45,7 @@ router.get(
 router.patch(
   '/:id',
   (
-    // Request의 제네릭을 사용하여 params, body의 타입을 지정할 수 있습니다.
     req: Request<{ id: string }, unknown, UpdateBookRequestBody>,
-    // Response 제네릭을 사용하여 body의 타입을 지정할 수 있습니다.
     res: Response<ApiResponse<UpdateBookResponseBody>>
   ) => {
     const bookId = parseInt(req.params.id, 10);
@@ -69,7 +62,6 @@ router.patch(
         return;
       }
       if (review) {
-        // 한줄평 업데이트
         book.review = review;
       }
       res.json({ time: new Date().toISOString(), error: null, data: book });
@@ -87,9 +79,7 @@ router.patch(
 router.post(
   '/',
   (
-    // Request의 제네릭을 사용하여 params, query, body의 타입을 지정할 수 있습니다.
     req: Request<unknown, unknown, CreateBookRequestBody>,
-    // Response 제네릭을 사용하여 body의 타입을 지정할 수 있습니다.
     res: Response<ApiResponse<CreateBookResponseBody>>
   ) => {
     const { title, description, genre, coverImage } = req.body;
@@ -103,7 +93,6 @@ router.post(
       return;
     }
 
-    // genre가 Genre enum에 있는지 확인
     if (!Object.values(Genre).includes(genre)) {
       res.status(400).json({
         time: new Date().toISOString(),

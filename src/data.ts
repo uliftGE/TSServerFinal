@@ -1,4 +1,3 @@
-// src/data.js
 import { Book, Genre } from './@types/book';
 export const books: Book[] = [
   {
@@ -34,4 +33,3 @@ export const books: Book[] = [
 ];
 
 export default books;
-
