@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "main": "dist/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/app.js",
     "dev": "nodemon --watch src --exec 'ts-node src/app.ts'",
-    "build": "tsc --project tsconfig.json"
+    "build": "tsc && copyfiles -u 1 src/images/* dist/src/"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +16,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.9.0",
+    "copyfiles": "^2.4.1",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"

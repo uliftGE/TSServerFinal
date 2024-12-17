@@ -1,5 +1,4 @@
 "use strict";
-// src/routes/books.js
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -63,7 +62,6 @@ router.post('/', (req, res) => {
         });
         return;
     }
-    // genre가 Genre enum에 있는지 확인
     if (!Object.values(book_1.Genre).includes(genre)) {
         res.status(400).json({
             time: new Date().toISOString(),

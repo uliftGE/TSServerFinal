@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.books = void 0;
-// src/data.js
 const book_1 = require("./@types/book");
 exports.books = [
     {
