@@ -5,6 +5,10 @@
   "compilerOptions": {
     "rootDir": ".",
     "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@tyes/*": ["src/@types/*"]
+    }
   },
   "ts-node": {
     "require": ["tsconfig-paths/register"]
