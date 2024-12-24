@@ -1,0 +1,7 @@
+# Ignore all dist and node_modules folders
+dist/
+node_modules/
+
+# Exception rules
+!dist/
+!node_modules/

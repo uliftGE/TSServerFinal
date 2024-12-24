@@ -1,4 +1,4 @@
-import { Book, Genre } from './@types/book';
+import { Book, Genre } from 'src/@types/book';
 export const books: Book[] = [
   {
     id: 1,
