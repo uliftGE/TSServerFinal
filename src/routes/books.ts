@@ -8,8 +8,8 @@ import {
   UpdateBookResponseBody,
   CreateBookResponseBody,
   Genre,
-} from '../@types/book';
-import { ApiResponse } from '../@types/api';
+} from '../types/book';
+import { ApiResponse } from '../types/api';
 import { books } from '../data';
 
 const router = express.Router();
