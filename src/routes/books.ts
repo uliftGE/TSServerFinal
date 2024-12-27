@@ -49,17 +49,12 @@ router.patch(
     res: Response<ApiResponse<UpdateBookResponseBody>>
   ) => {
     const bookId = parseInt(req.params.id, 10);
-    const { review } = req.body;
+    const { review, read } = req.body;
     const book = books.find((b) => b.id === bookId);
 
     if (book !== undefined) {
       if (review === '') {
-        res.status(400).json({
-          time: new Date().toISOString(),
-          error: `body parameter 'review'는 필수입니다.`,
-          data: null,
-        });
-        return;
+        if (read !== undefined) book.read = read;
       }
       if (review) {
         book.review = review;
