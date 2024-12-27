@@ -1,11 +1,8 @@
 import express, { Request, Response } from 'express';
 import {
   Book,
-  GetBookResponseBody,
-  GetBooksResponseBody,
   UpdateBookRequestBody,
   CreateBookRequestBody,
-  UpdateBookResponseBody,
   CreateBookResponseBody,
   Genre,
 } from '../types/book';
@@ -15,17 +12,14 @@ import { books } from '../data';
 const router = express.Router();
 
 // GET /books - 모든 책 목록을 가져옵니다.
-router.get('/', (req, res: Response<ApiResponse<GetBooksResponseBody>>) => {
+router.get('/', (req, res: Response<ApiResponse<Book[]>>) => {
   res.json({ time: new Date().toISOString(), error: null, data: books });
 });
 
 // GET /books/:id - 특정 책의 상세 정보를 가져옵니다.
 router.get(
   '/:id',
-  (
-    req: Request<{ id: string }>,
-    res: Response<ApiResponse<GetBookResponseBody>>
-  ) => {
+  (req: Request<{ id: string }>, res: Response<ApiResponse<Book>>) => {
     const bookId = parseInt(req.params.id, 10);
     const book = books.find((b) => b.id === bookId);
 
@@ -46,7 +40,7 @@ router.patch(
   '/:id',
   (
     req: Request<{ id: string }, unknown, UpdateBookRequestBody>,
-    res: Response<ApiResponse<UpdateBookResponseBody>>
+    res: Response<ApiResponse<Book>>
   ) => {
     const bookId = parseInt(req.params.id, 10);
     const { review, read } = req.body;

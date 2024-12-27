@@ -19,14 +19,10 @@ export type Book = {
   review: string;
 };
 
-export type GetBookResponseBody = Book;
-export type GetBooksResponseBody = Book[];
-
 export type UpdateBookRequestBody = {
   read?: boolean;
   review?: string;
 };
-export type UpdateBookResponseBody = Book;
 
 export type CreateBookRequestBody = {
   title: string;
